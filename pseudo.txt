@@ -1,0 +1,39 @@
+Deliverables
+- A user can create a contact via a form when the "New Contact" button is clicked
+    - the created contact should have:
+        - first name
+        - last name
+        - street
+        - city
+        - post code
+        - an option to block the contact
+    - the created contact should be saved in the database
+    - the created contact should be added to the contacts list
+
+Instructions
+- Download files from: https://codesandbox.io/s/address-book-react-fdj34?file=/src/App.js
+- Open a temrinal and run the following: npm install & npm start
+- Open a terminal and run this command in the project directory json-server --watch db/db.json --routes db/routes.json --port 3030
+- Look for [TODO] Write Code for hints on where you need to write code
+- Write a useEffect for a "GET" request from the server
+- Write form handlers for the CreateContactForm inputs
+- Write a handleSubmit for the form
+- Write a "POST" request for the /contacts endpoint
+- Write a "POST" request for the /addresses endpoint
+
+Tips
+- Check db/db.json and think about which URLs you are going to need when creating your fetch functions.
+- Use state to keep track of changes and render the UI.
+- When writing the "POST" requests you need to do one before the other, look at addressId in contacts to figure it out!
+[16:21] Steven R: @everyone here is the complete code from the lecture earlier today:
+
+Note: use it as a reference, if you want it working you need to run json-server via VS code.
+
+https://codesandbox.io/s/crud-react-starter-worked-example-1v5h3?file=/src/components/CreateUserForm.jsx
+[16:42] Steven R: Challenges
+- A user can edit a contact via a form when the "Edit" button is clicked
+    - the updated contact should be saved in the database
+    - the updated contact should be viewable in the UI
+    - the selected contact can also be deleted from the edit contact form
+- When a user submits a form they should be redirected to see the changes
+    - Use a ContactView component to do this.
