@@ -27,6 +27,18 @@
       "street": "Buckingham Palace",
       "city": "London",
       "postCode": "SW1A 1AA"
+    },
+    {
+      "city": "Bucuresti",
+      "postCode": "061185",
+      "street": "M15 Aleea Zorelelor Nr 2",
+      "id": 3
+    },
+    {
+      "firstName": "Valentin",
+      "lastName": "Mocanu",
+      "blockContact": false,
+      "id": 4
     }
   ]
 }

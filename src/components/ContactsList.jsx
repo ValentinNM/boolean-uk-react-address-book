@@ -16,13 +16,15 @@ function ContactsList(props) {
         {contacts.map((contact, index) => {
           const { firstName, lastName, address } = contact;
 
+          console.log("Contacts list props: ", contact)
+
           return (
             <li key={index}>
               <h3>
                 {firstName} {lastName}
               </h3>
               <p>
-                {address.street}, {address.postCode}
+                {/* {address.street}, {address.postCode} */}
               </p>
             </li>
           );
