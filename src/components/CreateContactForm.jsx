@@ -1,10 +1,12 @@
 import { useState } from "react";
 
 
-function CreateContactForm() {
+function CreateContactForm(props) {
 
   // [TODO] Write form handlers here and POST requests here...
   
+  const {contacts,setContacts, userToEdit} = props;
+
   const [addressInputs, setAddressInputs] = useState({ 
       city: "", 
       postCode: "",
@@ -15,20 +17,12 @@ function CreateContactForm() {
     firstName: "",
     lastName: "",
     blockContact: false
-    // addressId = ""
+    // addressId: ""
   })
 
-  console.log("create contact form state: ", contactInputs, addressInputs)
+  // console.log("create contact form state: ", contactInputs, addressInputs)
   const handleSubmit = (event) => {
     event.preventDefault();
-
-    const userNewSubmission = { 
-    firstName: contactInputs.firstName,
-    lastName: contactInputs.lastName,
-    blockContact: contactInputs.blockContact,
-    // addressId: newUserAddress.id
-    // addressId: 1
-  };
 
   const newUserAddress = { 
     city: addressInputs.city, 
@@ -50,8 +44,15 @@ function CreateContactForm() {
     console.log(
       "addressInputs:", addressInputs ,
     "\n" , "newUserAddress: ", newUserAddress);
-    setAddressInputs({...addressInputs, newAddress})
-  
+    // setAddressInputs({...addressInputs, newAddress})
+
+    const userNewSubmission = { 
+      firstName: contactInputs.firstName,
+      lastName: contactInputs.lastName,
+      blockContact: contactInputs.blockContact,
+      addressId: newAddress.id
+    };
+
     const fetchOptions = { 
       method: "POST",
       headers: {
@@ -60,15 +61,18 @@ function CreateContactForm() {
       body : JSON.stringify(userNewSubmission)
     };
   
-    fetch("http://localhost:3030/addresses", fetchOptions)
+    fetch("http://localhost:3030/contacts", fetchOptions)
     .then((res) => res.json())
     .then((newContact) => { 
       console.log(
-      //   "contactInputs:", contactInputs ,
-      // "\n" , "newContact: ", newContact)
-      )
+        "contactInputs:", contactInputs ,
+      "\n" , "newContact: ", newContact)
+      const contactToAdd = {
+        ...newContact,
+        address: newAddress,
+      }
       setContactInputs({...contactInputs, userNewSubmission})
-
+      setContacts([...contacts, newContact]);
     })
   })
 }
@@ -96,19 +100,19 @@ function CreateContactForm() {
   }
 
     const handleContactInputs = event => { 
-      console.log(
-        "Inisde handleContactInputs: ",
-        event.target.type,
-        event.target.value
-        )
+      // console.log(
+      //   "Inisde handleContactInputs: ",
+      //   event.target.type,
+      //   event.target.value
+      //   )
 
         const inputType = event.target.type
         const inputName = event.target.name
-        console.log
-        ("inputType: ", inputType, "\n",
-        "inputName: " ,inputName, "\n",
-        event.target.value
-        )
+        // console.log
+        // ("inputType: ", inputType, "\n",
+        // "inputName: " ,inputName, "\n",
+        // event.target.value
+        // )
 
         if (inputType === "checkbox"){ 
           console.log("inputType if:", inputType)

@@ -1,6 +1,7 @@
 function ContactsList(props) {
-  const { contacts, hideForm, setHideForm } = props;
+  const { contacts, hideForm, setHideForm, hideEditForm, setHideEditForm} = props;
 
+  console.log("inisde ContactsList: ",  hideEditForm ,setHideEditForm )
   return (
     <aside className="contacts-section light-shadow">
       <header>
@@ -12,20 +13,25 @@ function ContactsList(props) {
           {hideForm ? "Create" : "Cancel"}
         </button>
       </header>
-      <ul>
+      <ul  className="contacts-list">
         {contacts.map((contact, index) => {
           const { firstName, lastName, address } = contact;
 
-          console.log("Contacts list props: ", contact)
+          console.log("Contacts list props inside ContactsList: ", contact)
 
           return (
             <li key={index}>
               <h3>
                 {firstName} {lastName}
               </h3>
-              <p>
+              {/* <p> */}
                 {/* {address.street}, {address.postCode} */}
-              </p>
+              {/* </p> */}
+              <button
+              className= "button"
+              onClick={() => setHideEditForm(!hideEditForm)}
+              >Edit</button>
+              <button className="button">View</button>
             </li>
           );
         })}
