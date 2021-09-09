@@ -5,7 +5,7 @@ function CreateContactForm(props) {
 
   // [TODO] Write form handlers here and POST requests here...
   
-  const {contacts,setContacts, userToEdit} = props;
+  const {contacts,setContacts} = props;
 
   const [addressInputs, setAddressInputs] = useState({ 
       city: "", 
@@ -41,9 +41,9 @@ function CreateContactForm(props) {
   fetch("http://localhost:3030/addresses", fetchOptions)
   .then((res) => res.json())
   .then((newAddress) => { 
-    console.log(
-      "addressInputs:", addressInputs ,
-    "\n" , "newUserAddress: ", newUserAddress);
+    // console.log(
+    //   "addressInputs:", addressInputs ,
+    // "\n" , "newUserAddress: ", newUserAddress);
     // setAddressInputs({...addressInputs, newAddress})
 
     const userNewSubmission = { 
@@ -64,9 +64,9 @@ function CreateContactForm(props) {
     fetch("http://localhost:3030/contacts", fetchOptions)
     .then((res) => res.json())
     .then((newContact) => { 
-      console.log(
-        "contactInputs:", contactInputs ,
-      "\n" , "newContact: ", newContact)
+      // console.log(
+      //   "contactInputs:", contactInputs ,
+      // "\n" , "newContact: ", newContact)
       const contactToAdd = {
         ...newContact,
         address: newAddress,
@@ -79,19 +79,19 @@ function CreateContactForm(props) {
 
   const handleAddressInputs = event => { 
 
-    console.log(
-      "Inisde handleContactInputs: ",
-      event.target.name,
-      event.target.value
-      )
+    // console.log(
+    //   "Inisde handleContactInputs: ",
+    //   event.target.name,
+    //   event.target.value
+    //   )
 
       const inputValue = event.target.value
       const inputName = event.target.name
-      console.log
-      ("inputValue: ", inputValue, "\n",
-      "inputName: " ,inputName, "\n",
-      event.target.value
-      )
+      // console.log
+      // ("inputValue: ", inputValue, "\n",
+      // "inputName: " ,inputName, "\n",
+      // event.target.value
+      // )
 
       setAddressInputs({
         ...addressInputs,
@@ -115,7 +115,7 @@ function CreateContactForm(props) {
         // )
 
         if (inputType === "checkbox"){ 
-          console.log("inputType if:", inputType)
+          // console.log("inputType if:", inputType)
           setContactInputs({
             ...contactInputs,
             [inputName]: event.target.checked

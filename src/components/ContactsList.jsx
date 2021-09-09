@@ -1,7 +1,7 @@
 function ContactsList(props) {
-  const { contacts, hideForm, setHideForm, hideEditForm, setHideEditForm} = props;
+  const { contacts, hideForm, setHideForm, hideEditForm, setHideEditForm, setUserToEdit} = props;
 
-  console.log("inisde ContactsList: ",  hideEditForm ,setHideEditForm )
+  // console.log("inisde ContactsList props: ",  hideEditForm, setHideEditForm );
   return (
     <aside className="contacts-section light-shadow">
       <header>
@@ -29,7 +29,12 @@ function ContactsList(props) {
               {/* </p> */}
               <button
               className= "button"
-              onClick={() => setHideEditForm(!hideEditForm)}
+              onClick={() =>
+                setHideEditForm(!hideEditForm)
+              }
+              onClick={() =>
+                setUserToEdit(contact)
+              }
               >Edit</button>
               <button className="button">View</button>
             </li>
